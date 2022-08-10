@@ -1,15 +1,24 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    outline: none;
+    border: none;
+    font-family: 'Quicksand';
 }
 
 :root{
     --fondo:#02021C;
+    --fondo-input:#F7F7F7;
 }
 
+body{
+    background: white;
 
+}
 .navbar{
     display: grid;
     grid-template-columns: repeat(3,auto);
@@ -18,13 +27,63 @@
     justify-items: center;
     /* background-color: var(--fondo); */
 }
+.main{
+    border: 1px solid black;
+    padding-top: 10vh;
+    /* margin: 0 auto; */
+}
 
 a{
     display: inline-block;
 }
 .ctn-logo{
     text-align: center;
+
 }
+
+
 .logo{
     width: 60%;
 }
+
+
+.login{
+    padding:5%;
+    border: 1px solid black;
+}
+
+
+
+.label{
+    font-weight: 600;
+}
+
+.form p{
+    width: 80%;
+}
+.form{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    flex-flow: wrap;
+    justify-content: center;
+    /* text-align: center; */
+    /* width: fit-content; */
+}
+.input{
+    border-radius:8px;
+    border: 1px solid;
+    background: var(--fondo-input);
+    padding: 5px;
+    width: 100%;
+}
+
+.btn{
+    color: white;
+    background-color:#7B2ABF;
+    padding: 5px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+
