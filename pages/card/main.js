@@ -7,3 +7,7 @@ const footer = document.getElementById('footer');
 // Navbar.render(header);
 Login.render(main);
 Footer.render(footer);
+
+if(!localStorage.getItem('sesion')){
+    window.location = '/pages/card/index.html';
+}
