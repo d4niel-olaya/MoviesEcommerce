@@ -7,10 +7,12 @@ const LogIn = (e) =>{
     if(user.value == 'Juan' && password.value == 'Olaya'){
         localStorage.setItem('sesion', true);
         alert('Contraseña Valida');
+        return;
     }
     else{
         localStorage.setItem('sesion', false);
         alert('No puede entrar');
+        return;
     }
 }
 
