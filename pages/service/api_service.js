@@ -8,7 +8,7 @@ const getUrl = (ruta, busqueda) => {
     // (Object.keys((busqueda||{}))).map(key => {
     //     params.set(key, busqueda[key]);
     // })
-    console.log(`${URL}/${ruta}?${params.toString()}`);
+    // console.log(`${URL}/${ruta}?${params.toString()}`);
     // console.log(busqueda);
     // console.log(params.toString());
     return `${URL}/${ruta}?${params.toString()}`
