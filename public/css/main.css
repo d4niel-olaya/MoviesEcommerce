@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap');
 
 *{
@@ -7,6 +6,7 @@
     box-sizing: border-box;
     outline: none;
     border: none;
+    font-size: 16px;
     font-family: 'Quicksand';
 }
 
@@ -90,4 +90,31 @@ a{
     text-align: center;
 }
 
+#app{
+    width:1920px;
+}
+.movies{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
 
+a{
+    display: inline-block;
+}
+
+.movies .movie{
+    text-align: center;
+    width: 60%;
+    /* border: 1px solid; */
+}
+.movies .movie .imgmovie{
+    width: 100%;
+}
+
+@media(max-width:375px){
+    #app{
+        width: 100%;
+    }
+}
