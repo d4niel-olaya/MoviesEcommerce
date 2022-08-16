@@ -1,6 +1,7 @@
 import { getPopular } from "../service/api_service";
 import * as Movie from '../components/movie/index';
 import * as Nav from '../components/navbar/main';
+import './style.css';
 if(localStorage.getItem('sesion') == 'false'){
     window.location.pathname = '/pages/card/index.html';
 }

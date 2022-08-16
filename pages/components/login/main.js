@@ -6,7 +6,9 @@ const LogIn = (e) =>{
     const password = document.getElementById('password');
     if(user.value == 'Juan' && password.value == 'Olaya'){
         localStorage.setItem('sesion', true);
+        localStorage.setItem('movies', '[]');
         alert('Contraseña Valida');
+        window.location.pathname = 'pages/shop/index.html';
         return;
     }
     else{
