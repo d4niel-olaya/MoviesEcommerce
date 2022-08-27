@@ -1,4 +1,6 @@
+import { get } from "./service/api";
 const app = document.getElementById('app');
+
 const template = `<h1>Ecommerce</h1>
 <a href="#">Cart</a>
 <a href="#">Product</a>
