@@ -8,7 +8,7 @@ const getUrl = (ruta, busqueda) => {
     // (Object.keys((busqueda||{}))).map(key => {
     //     params.set(key, busqueda[key]);
     // })
-    console.log(`${URL}/${ruta}?${params.toString()}`);
+    // console.log(`${URL}/${ruta}?${params.toString()}`);
     // console.log(busqueda);
     // console.log(params.toString());
     return `${URL}/${ruta}?${params.toString()}`
@@ -26,7 +26,7 @@ export async function getInfo(id){
     const respuesta = await fetch(Url).then(res => res.json());
     return {name:respuesta.title, rate: respuesta.vote_average,
             genres: respuesta.genres[0].name,
-            image:`https://image.tmdb.org/t/p/w500/`+ respuesta.backdrop_path}
+            image:`https://image.tmdb.org/t/p/w500/`+ respuesta.backdrop_path};
 }
 
 export async function getPopular(){
