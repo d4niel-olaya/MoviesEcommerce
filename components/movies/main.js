@@ -9,8 +9,8 @@ export class Movies
     Create({id,title, backdrop_path}){
         const card = document.createElement('article');
         card.innerHTML = `
-        <img src="${this.url+backdrop_path}">
         <p>${title}</p>
+        <img src="${this.url+backdrop_path}">
         <button id="${id}">Add to card</button>`;
         return card;
     }
