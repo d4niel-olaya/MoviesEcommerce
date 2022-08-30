@@ -1,3 +1,5 @@
+
+
 export class Movies
 {
     constructor(dom, list){
@@ -11,8 +13,17 @@ export class Movies
         card.innerHTML = `
         <p>${title}</p>
         <img src="${this.url+backdrop_path}">
-        <button id="${id}">Add to card</button>`;
+        <button id="${id}" class="add">Add to card</button>`;
+        const btn = card.children[2];
+        this.AddToCart(btn);
         return card;
+    }
+    AddToCart(movie){
+        movie.addEventListener('click', () =>{
+            const movies = JSON.parse(localStorage.getItem('movies'));
+            movies.push({id:movie.id});
+            localStorage.setItem('movies', JSON.stringify(movies));
+        })
     }
     render(){
         const frag = document.createDocumentFragment();

@@ -1,5 +1,6 @@
 import { get } from "./service/api";
 import * as Producto from './pages/product/main.js';
+localStorage.setItem('movies', '[]');
 const app = document.getElementById('app');
 
 const template = `<h1>Ecommerce</h1>
