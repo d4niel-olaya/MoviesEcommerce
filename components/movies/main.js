@@ -8,19 +8,14 @@ export class Movies
 
     Create({id,title, backdrop_path}){
         const card = document.createElement('article');
-        const text = document.createElement('p');
-        const img = document.createElement('img');
-        const button = document.createElement('button');
-        text.textContent = title;
-        img.src = this.url+backdrop_path;
-        button.textContent = 'Add to cart';
-        card.appendChild(text);
-        card.appendChild(img);
-        card.appendChild(button);
+        card.innerHTML = `
+        <img src="${this.url+backdrop_path}">
+        <p>${title}</p>
+        <button id="${id}">Add to card</button>`;
         return card;
     }
     render(){
-        const frag = document.createDocumentFragment('frag');
+        const frag = document.createDocumentFragment();
         this.list.forEach(element => {
             frag.appendChild(this.Create(element));
         });

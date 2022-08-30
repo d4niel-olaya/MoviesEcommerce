@@ -3,5 +3,4 @@ import { get } from "../../service/api";
 const app = document.getElementById('app');
 const list = await get('movie/popular');
 const mov = new Movies(app,list.results);
-console.log(list)
 mov.render();
