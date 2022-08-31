@@ -15,13 +15,15 @@ export class Movies
         <img src="${this.url+backdrop_path}">
         <button id="${id}" class="add">Add to card</button>`;
         const btn = card.children[2];
-        this.AddToCart(btn);
+        const name = card.children[0];
+        const img = card.children[1];
+        this.AddToCart(btn,name,img);
         return card;
     }
-    AddToCart(movie){
+    AddToCart(movie,name,img){
         movie.addEventListener('click', () =>{
             const movies = JSON.parse(localStorage.getItem('movies'));
-            movies.push({id:movie.id});
+            movies.push({id:movie.id, title:name.textContent, img:img.src});
             localStorage.setItem('movies', JSON.stringify(movies));
         })
     }
