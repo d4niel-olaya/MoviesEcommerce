@@ -46,9 +46,22 @@
     object-fit: cover;
 }
 
-
+.app .header{
+    max-width: 100%;
+}
+.app .header .nav-items{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
 .add{
     color:white;
     background-color: var(--btn);
 }
 
+.search{
+    background-color: var(--bg-entry);
+    border: 1px solid rgba(0,0 , 0, 0.8);
+}
