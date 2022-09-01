@@ -10,9 +10,10 @@ export class Movies
 
     Create({id,title, backdrop_path}){
         const card = document.createElement('article');
+        card.setAttribute('class', 'movie');
         card.innerHTML = `
         <p>${title}</p>
-        <img src="${this.url+backdrop_path}">
+        <img src="${this.url+backdrop_path}" class="img">
         <button id="${id}" class="add">Add to card</button>`;
         const btn = card.children[2];
         const name = card.children[0];

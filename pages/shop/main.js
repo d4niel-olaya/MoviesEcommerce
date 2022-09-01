@@ -10,5 +10,5 @@ const cart = document.getElementById('cart');
 const list = await get('movie/popular');
 const mov = new Movies(app,list.results);
 mov.render();
-const shop = new Shopping(JSON.parse(localStorage.getItem('movies')), cart);
-shop.render();
+// const shop = new Shopping(JSON.parse(localStorage.getItem('movies')), cart);
+// shop.render();
