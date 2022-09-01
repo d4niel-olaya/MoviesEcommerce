@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@300&display=swap');
+
+
+
+:root{
+    font-size: 16px;
+    --btn:#7B2ABF;
+    --bg-entry:#F7F7F7;
+    --font-color-entry:#797979;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    text-decoration: none;
+    list-style: none;
+    outline: none;
+    font-family: 'Commissioner', Arial, Helvetica, sans-serif;
+
+}
+
+
+.app{
+    max-width: 1920px;
+}
+
+.app .header{
+    width: 100%;
+    text-align: center;
+}
+
+.app .main{
+    width: 100%;
+    border:1px solid;
+    padding: 1rem;
+}
+
+.main .login{
+    max-width: 100%;
+    border: 1px solid;
+    text-align: center;
+}
+
+.main .login .submit, .entry{
+    max-width: 100%;
+}
+
+
+.entry{
+    width: 80%;
+    border: 1px solid;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    color:var(--font-color-entry)
+    
+}
+
+
+.submit{
+    width: 80%;
+    color:white;
+    background-color: var(--btn);
+    padding:0.5rem;
+    border-radius: 0.5rem;
+}
+
+
+
+
