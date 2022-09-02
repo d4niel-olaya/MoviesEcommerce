@@ -7,6 +7,7 @@ const btn = document.getElementById('submit');
 const formulario = document.getElementById('login');
 const logeo = new Login(formulario);
 if(params.get('cart') === 'true'){
+    app.innerHTML = '';
     const cartShop = new Shopping(app, JSON.parse(localStorage.getItem('movies')));
     cartShop.render();
 }
