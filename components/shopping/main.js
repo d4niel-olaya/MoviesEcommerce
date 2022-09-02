@@ -11,26 +11,34 @@ export class Shopping
     CreateItem({id,title,img}){
         const container = document.createElement('article');
         container.setAttribute('class', 'movie');
-        container.innerHTML = `
+        container.setAttribute('data-id', id);
+        const items = `
         <img src="${img}" class="img">    
         <span class="title">${title}</span>
         <a id="remove">X</a>    
-        `;
+        `
+        container.insertAdjacentHTML('afterbegin', items);
         const remove = container.children[2];
         this.Remove(remove);
         return container;
     }
     CreateBtn(){
         const container = document.createElement('div');
-        container.innerHTML= `
+        const items= `
         <span>Total</span>
-        <span>${JSON.parse(localStorage.getItem('movies')).length}</span>
+        <span>${this.movies.length}</span>
         <button>Checkout</button>`;
+        container.insertAdjacentHTML('afterbegin',items)
         return container;
     }
     Remove(item){
-        item.addEventListener('click', () =>{
-            alert('vas borrar este elemento');
+        item.addEventListener('click', (e) =>{
+            const i = e.target;
+            const parent = i.parentElement;
+            const idItem = parent.getAttribute('data-id');
+            parent.remove();
+            this.movies = this.movies.filter(el=> el.id != idItem);
+            localStorage.setItem('movies', JSON.stringify(this.movies));
         })
     }
     render(){
