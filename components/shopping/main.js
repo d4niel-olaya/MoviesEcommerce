@@ -3,7 +3,7 @@ import { get } from "../../service/api";
 
 export class Shopping
 {
-    constructor(movies,dom){
+    constructor(dom,movies){
         this.movies = movies;
         this.dom = dom
     }

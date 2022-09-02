@@ -11,17 +11,8 @@ export class NavBar
         container.innerHTML = `
         <img src="../../assets/icons/icon_menu.svg">
         <img src="../../assets/icons/logo_yard_sale.svg">
-        <img src="../../assets/icons/icon_shopping_cart.svg">`
-        const cart = container.children[2];
-
-        this.OpenCart(cart);
+        <a href="../../pages/cart/index.html?cart=true"><img src="../../assets/icons/icon_shopping_cart.svg"></a>`
         return container;
-    }
-    OpenCart(item){
-        item.addEventListener('click', () =>{
-            const movies = JSON.parse(localStorage.getItem('movies'));
-            console.log(movies);
-        })
     }
     CreateSearch(){
         const container = document.createElement('div');
