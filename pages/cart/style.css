@@ -67,6 +67,34 @@
     border-radius: 1rem;
     object-fit: cover;
 }
+.app .check{
+    max-width: 100%;
+}
+
+.app .check > div{
+    max-width: 100%;
+}
+
+.app .check .details{
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.app .check .chk-btn{
+    padding: 1rem;
+    text-align: center;
+}
+
+.chk-btn .btn-check{
+    background-color:var(--btn);
+    color: white;
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 0.3rem;
+}
+
+
+
 
 .app .movie .title{
     max-width: 50%;

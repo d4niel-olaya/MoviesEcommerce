@@ -24,10 +24,17 @@ export class Shopping
     }
     CreateBtn(){
         const container = document.createElement('div');
+        container.setAttribute('class', 'check');
         const items= `
-        <span>Total</span>
-        <span>${this.movies.length}</span>
-        <button>Checkout</button>`;
+        <div class="details">
+            <span>Total</span>
+            <span>${this.movies.length}</span>
+        
+        </div> 
+        <div class="chk-btn">
+            <button class="btn-check">Checkout</button>
+        
+        </div>`;
         container.insertAdjacentHTML('afterbegin',items)
         return container;
     }
