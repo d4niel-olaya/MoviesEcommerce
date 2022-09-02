@@ -20,7 +20,14 @@ export class Shopping
         this.Remove(remove);
         return container;
     }
-
+    CreateBtn(){
+        const container = document.createElement('div');
+        container.innerHTML= `
+        <span>Total</span>
+        <span>${JSON.parse(localStorage.getItem('movies')).length}</span>
+        <button>Checkout</button>`;
+        return container;
+    }
     Remove(item){
         item.addEventListener('click', () =>{
             alert('vas borrar este elemento');
@@ -31,6 +38,7 @@ export class Shopping
         this.movies.forEach(element => {
                 frag.appendChild(this.CreateItem(element));
            });
+        frag.appendChild(this.CreateBtn())
         this.dom.appendChild(frag);
     }
 

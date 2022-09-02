@@ -22,6 +22,20 @@ export class NavBar
         `
         return container;
     }
+    CreateCartNav(){
+        const container = document.createElement('header');
+        container.setAttribute('class', 'header-cart');
+        container.innerHTML = `
+        <img src="../../assets/icons/icon_menu.svg">
+        <h2>Shopping cart</h2>
+        `;
+        return container;
+    }
+    renderCart(){
+        const frag = document.createDocumentFragment();
+        frag.appendChild(this.CreateCartNav());
+        this.dom.appendChild(frag);
+    }
     render(){
         const frag = document.createDocumentFragment();
         frag.append(this.Create());
