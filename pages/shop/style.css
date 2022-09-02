@@ -56,6 +56,19 @@
     align-items: center;
     justify-content: space-around;
 }
+
+.app .header .search{
+    width: 100%;
+    text-align: center;
+
+}
+
+.header .search .inp-search{
+    width: 80%;
+    border: 1px solid;
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+}
 .add{
     color:white;
     background-color: var(--btn);
