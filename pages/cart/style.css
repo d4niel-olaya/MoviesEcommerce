@@ -85,6 +85,14 @@
     text-align: center;
 }
 
+
+.app .order{
+    max-width: 100%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
 .chk-btn .btn-check{
     background-color:var(--btn);
     color: white;

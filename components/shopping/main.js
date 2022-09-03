@@ -68,12 +68,16 @@ export class Shopping
     }
     CreateOrder({date,movies}){
         const card = document.createElement('article');
-        card.setAttribute('class', 'movie');
+        card.setAttribute('class', 'order');
         const content = `
-        <span>${date}</span>
-        <span>${movies.length}</span>
+        <div>
+            <p>${date}</p>
+            <p>${movies.length}</p>
+        </div>
+        <img src="../../assets/icons/arrow_rigth.svg">
         `
         card.insertAdjacentHTML('afterbegin', content);
+        const img = card.children[1];
         return card
     }
     renderOrder(obj){
