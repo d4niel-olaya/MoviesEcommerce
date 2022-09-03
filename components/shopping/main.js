@@ -35,7 +35,9 @@ export class Shopping
             <button class="btn-check">Checkout</button>
         
         </div>`;
-        container.insertAdjacentHTML('afterbegin',items)
+        container.insertAdjacentHTML('afterbegin',items);
+        const btn = container.lastChild.children[0];
+        this.Checkout(btn);
         return container;
     }
     Remove(item){
@@ -46,6 +48,20 @@ export class Shopping
             parent.remove();
             this.movies = this.movies.filter(el=> el.id != idItem);
             localStorage.setItem('movies', JSON.stringify(this.movies));
+        })
+    }
+    Checkout(item){
+        item.addEventListener('click', () => {
+            if(!localStorage.hasOwnProperty('checkout')){
+                localStorage.setItem('checkout', '[]');
+                return;
+            }
+            const check = JSON.parse(localStorage.getItem('checkout'));
+            const movies = JSON.parse(localStorage.getItem('movies'));
+            const date = new Date();
+            check.push({date:date.toLocaleString(), movies:[...movies]});
+            localStorage.setItem('checkout', JSON.stringify(check));
+            // alert('vas a ir al checkout');
         })
     }
     render(){
