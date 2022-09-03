@@ -7,7 +7,22 @@ export class Shopping
         this.movies = movies;
         this.dom = dom
     }
+    CreateNavbar(){
+        const header = document.createElement('header');
+        header.setAttribute('class', 'header-cart');
+        const navbar = `
+            <img src="../../assets/icons/icon_menu.svg">
+            <h2>Shopping cart</h2>`;
+        header.insertAdjacentHTML('afterbegin',navbar);
+        return header;
+    }
 
+    CreateArrowBack(json){
+        const arrow = document.createElement('img');
+        arrow.setAttribute('src', '../../assets/icons/back-arrow-comb 2.svg');
+        arrow.addEventListener('click', () => {this.renderOrder(json)});
+        return arrow;
+    }
     CreateItem({id,title,img}){
         const container = document.createElement('article');
         container.setAttribute('class', 'movie');
@@ -94,13 +109,9 @@ export class Shopping
     renderDetailOrder(json){
         const frag = document.createDocumentFragment();
         const items = json.movies;
-        const header = document.createElement('header');
-        header.setAttribute('class', 'header-cart');
-        const navbar = `
-            <img src="../../assets/icons/icon_menu.svg">
-            <h2>Shopping cart</h2>`;
-        header.insertAdjacentHTML('afterbegin',navbar);
-        frag.appendChild(header);
+
+        frag.appendChild(this.CreateNavbar());
+        frag.appendChild(this.CreateArrowBack(JSON.parse(localStorage.getItem('checkout'))));
 
         items.forEach(elem =>{
             frag.appendChild(this.CreateItem(elem));
@@ -109,13 +120,12 @@ export class Shopping
         this.dom.appendChild(frag);
     }   
     renderOrder(obj){
-        console.log(obj);
         const frag = document.createDocumentFragment();
+        frag.appendChild(this.CreateNavbar());
         obj.forEach(element =>{
             frag.appendChild(this.CreateOrder(element));
         })
-        this.dom.children[1].innerHTML = '';
-        console.log(this.dom);
+        this.dom.innerHTML = '';
         this.dom.appendChild(frag);
         console.log(frag);
     }
