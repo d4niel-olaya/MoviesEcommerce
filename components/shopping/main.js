@@ -62,8 +62,30 @@ export class Shopping
             check.push({date:date.toLocaleString(), movies:[...movies]});
             localStorage.setItem('checkout', JSON.stringify(check));
             localStorage.setItem('movies', '[]');
+            this.renderOrder(check);
             // alert('vas a ir al checkout');
         })
+    }
+    CreateOrder({date,movies}){
+        const card = document.createElement('article');
+        card.setAttribute('class', 'movie');
+        const content = `
+        <span>${date}</span>
+        <span>${movies.length}</span>
+        `
+        card.insertAdjacentHTML('afterbegin', content);
+        return card
+    }
+    renderOrder(obj){
+        console.log(obj);
+        const frag = document.createDocumentFragment();
+        obj.forEach(element =>{
+            frag.appendChild(this.CreateOrder(element));
+        })
+        this.dom.children[1].innerHTML = '';
+        console.log(this.dom);
+        this.dom.appendChild(frag);
+        console.log(frag);
     }
     render(){
         const frag = document.createDocumentFragment();
@@ -72,6 +94,8 @@ export class Shopping
            });
         frag.appendChild(this.CreateBtn())
         this.dom.appendChild(frag);
+        console.log(this.dom.children);
+
     }
 
 }
