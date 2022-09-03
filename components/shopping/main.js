@@ -71,6 +71,7 @@ export class Shopping
             const order = JSON.parse(localStorage.getItem('checkout'));
             const dateOrder = item.getAttribute('data-order');
             const json = Object.values(order).find(element => element.date == dateOrder);
+            this.renderDetailOrder(json);
             
         })
     }
@@ -89,6 +90,16 @@ export class Shopping
         this.OrderDetail(img);
         return card
     }
+
+    renderDetailOrder(json){
+        const frag = document.createDocumentFragment();
+        const items = json.movies;
+        items.forEach(elem =>{
+            frag.appendChild(this.CreateItem(elem));
+        })
+        this.dom.children[1].innerHTML = '';
+        this.dom.appendChild(frag);
+    }   
     renderOrder(obj){
         console.log(obj);
         const frag = document.createDocumentFragment();
