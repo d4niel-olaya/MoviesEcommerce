@@ -94,10 +94,18 @@ export class Shopping
     renderDetailOrder(json){
         const frag = document.createDocumentFragment();
         const items = json.movies;
+        const header = document.createElement('header');
+        header.setAttribute('class', 'header-cart');
+        const navbar = `
+            <img src="../../assets/icons/icon_menu.svg">
+            <h2>Shopping cart</h2>`;
+        header.insertAdjacentHTML('afterbegin',navbar);
+        frag.appendChild(header);
+
         items.forEach(elem =>{
             frag.appendChild(this.CreateItem(elem));
-        })
-        this.dom.children[1].innerHTML = '';
+        });
+        this.dom.innerHTML = '';
         this.dom.appendChild(frag);
     }   
     renderOrder(obj){
