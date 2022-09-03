@@ -61,6 +61,7 @@ export class Shopping
             const date = new Date();
             check.push({date:date.toLocaleString(), movies:[...movies]});
             localStorage.setItem('checkout', JSON.stringify(check));
+            localStorage.setItem('movies', '[]');
             // alert('vas a ir al checkout');
         })
     }
