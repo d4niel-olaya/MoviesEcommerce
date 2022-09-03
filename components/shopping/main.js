@@ -66,6 +66,14 @@ export class Shopping
             // alert('vas a ir al checkout');
         })
     }
+    OrderDetail(item){
+        item.addEventListener('click', (e) =>{
+            const order = JSON.parse(localStorage.getItem('checkout'));
+            const dateOrder = item.getAttribute('data-order');
+            const json = Object.values(order).find(element => element.date == dateOrder);
+            
+        })
+    }
     CreateOrder({date,movies}){
         const card = document.createElement('article');
         card.setAttribute('class', 'order');
@@ -74,10 +82,11 @@ export class Shopping
             <p>${date}</p>
             <p>${movies.length}</p>
         </div>
-        <img src="../../assets/icons/arrow_rigth.svg">
+        <img src="../../assets/icons/arrow_rigth.svg" data-order="${date}">
         `
         card.insertAdjacentHTML('afterbegin', content);
         const img = card.children[1];
+        this.OrderDetail(img);
         return card
     }
     renderOrder(obj){
