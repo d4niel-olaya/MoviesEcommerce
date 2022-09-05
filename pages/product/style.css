@@ -27,12 +27,13 @@
 }
 
 .app .carrousel{
-    width: 100%;
-
-}
-
-.app .carrousel .imgs{
     max-width: 100%;
+    border: 1px solid;
     display: flex;
-    overflow: scroll;
 }
+
+.app .carrousel > img{
+    width: 80%;
+    
+}
+
