@@ -32,14 +32,18 @@
 
 .app .main .movie{
     width: 100%;
-    border: 1px solid;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
+    text-align: center;
 }
 
+
+.movie > *{
+    margin:0.5rem;
+}
 .main .movie .img{
     max-width: 100%;
     width: 60%;
@@ -65,13 +69,14 @@
 
 .header .search .inp-search{
     width: 80%;
-    border: 1px solid;
     padding: 0.3rem;
     border-radius: 0.3rem;
 }
 .add{
     color:white;
     background-color: var(--btn);
+    border-radius: 0.4rem;
+    padding: 0.5rem;
 }
 
 .search{
