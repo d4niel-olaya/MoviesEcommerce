@@ -48,14 +48,12 @@ export class Carrousel
         arrow.addEventListener('click', () =>{
             const imgToChange = arrow.parentElement.children[1];
             let index = parseInt(imgToChange.getAttribute('data-index'))
-            const typeArrow = arrow.getAttribute('data-arrow')
-            if(typeArrow == 'R'){
-                index++;
-                const path = this.imagenes[index].backdrop_path;
-                imgToChange.setAttribute('src', this.url+path);
-                imgToChange.setAttribute('data-index', index.toString());
-                return;
-            }
+            const typeArrow = arrow.getAttribute('data-arrow');
+            typeArrow == 'R'? index++ : index--;
+            const path = this.imagenes[index].backdrop_path;
+            imgToChange.setAttribute('src', this.url+path);
+            imgToChange.setAttribute('data-index', index.toString());
+            return;
         })
     }
     RenderV2(){
