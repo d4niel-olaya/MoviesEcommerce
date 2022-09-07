@@ -37,3 +37,11 @@
     
 }
 
+
+.circle{
+    height: 5vh;
+    width: 2%;
+    border: 1px solid;
+    border-radius: 50%;
+}
+

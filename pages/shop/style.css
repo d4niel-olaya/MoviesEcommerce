@@ -83,3 +83,17 @@
     background-color: var(--bg-entry);
     border: 1px solid rgba(0,0 , 0, 0.8);
 }
+
+@media (min-width:768px){
+    .app .main{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .app .main .movie{
+        width: 50%;
+    }
+    .main .movie .img{
+        width: 60%;
+        object-fit: cover;
+    }
+}
