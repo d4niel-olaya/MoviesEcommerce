@@ -38,13 +38,11 @@
 }
 .app .main{
     width: 100%;
-    border:1px solid;
     padding: 1rem;
 }
 
 .main .login{
     max-width: 100%;
-    border: 1px solid;
     text-align: center;
 }
 
@@ -124,8 +122,32 @@
     background-color: var(--btn);
     padding:0.5rem;
     border-radius: 0.5rem;
+    margin-top: 0.5rem;
 }
 
 
 
-
+@media (min-width:768px){
+    .main .login{
+        max-width: 100%;
+    }
+    .main .login .submit, .entry{
+        max-width: 40%;
+    }
+}
+@media (min-width:1024px){
+    .main .login{
+        max-width: 100%;
+    }
+    .main .login .submit, .entry{
+        max-width: 30%;
+    }
+}
+@media (min-width:1280px){
+    .main .login{
+        max-width: 100%;
+    }
+    .main .login .submit, .entry{
+        max-width: 25%;
+    }
+}
