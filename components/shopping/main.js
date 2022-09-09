@@ -1,5 +1,5 @@
 import { get } from "../../service/api";
-
+import { NavBar } from "../navbar/main";
 
 export class Shopping
 {
