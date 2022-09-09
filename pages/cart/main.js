@@ -4,9 +4,7 @@ import { NavBar } from "../../components/navbar/main";
 const url = new URL(window.location);
 const params = new URLSearchParams(url.search);
 const app = document.getElementById('app');
-const btn = document.getElementById('submit');
-const formulario = document.getElementById('login');
-const logeo = new Login(formulario);
+const login = new Login(app);
 if(params.get('cart') === 'true'){
     app.innerHTML = '';
     const navbar= new NavBar(app).renderCart();

@@ -81,7 +81,7 @@
 
 .search{
     background-color: var(--bg-entry);
-    border: 1px solid rgba(0,0 , 0, 0.8);
+    padding: 0.5rem;
 }
 
 @media (min-width:768px){
@@ -96,4 +96,5 @@
         width: 60%;
         object-fit: cover;
     }
+
 }
