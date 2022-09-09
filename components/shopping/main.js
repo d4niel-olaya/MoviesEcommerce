@@ -6,6 +6,7 @@ export class Shopping
     constructor(dom,movies){
         this.movies = movies;
         this.dom = dom
+        this.render();
     }
     CreateNavbar(){
         const header = document.createElement('header');
@@ -131,10 +132,12 @@ export class Shopping
     }
     render(){
         const frag = document.createDocumentFragment();
+        frag.appendChild(this.CreateNavbar());
         this.movies.forEach(element => {
                 frag.appendChild(this.CreateItem(element));
            });
-        frag.appendChild(this.CreateBtn())
+        frag.appendChild(this.CreateBtn());
+        // frag.appendChild()
         this.dom.appendChild(frag);
         console.log(this.dom.children);
 

@@ -6,9 +6,7 @@ const params = new URLSearchParams(url.search);
 const app = document.getElementById('app');
 if(params.get('cart') === 'true'){
     app.innerHTML = '';
-    const navbar= new NavBar(app).renderCart();
     const cartShop = new Shopping(app, JSON.parse(localStorage.getItem('movies')));
-    cartShop.render();
 }
 else{
     if(localStorage.getItem('sesion') === 'true'){
