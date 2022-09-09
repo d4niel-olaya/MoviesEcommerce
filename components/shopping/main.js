@@ -75,10 +75,16 @@ export class Shopping
             const check = JSON.parse(localStorage.getItem('checkout'));
             const movies = JSON.parse(localStorage.getItem('movies'));
             const date = new Date();
-            check.push({date:date.toLocaleString(), movies:[...movies]});
-            localStorage.setItem('checkout', JSON.stringify(check));
-            localStorage.setItem('movies', '[]');
-            this.renderOrder(check);
+            if(movies.length == 0){
+                alert('Debe agregar una peli');
+            }
+            else{
+
+                check.push({date:date.toLocaleString(), movies:[...movies]});
+                localStorage.setItem('checkout', JSON.stringify(check));
+                localStorage.setItem('movies', '[]');
+                this.renderOrder(check);
+            }
             // alert('vas a ir al checkout');
         })
     }
@@ -108,6 +114,7 @@ export class Shopping
     }
 
     renderDetailOrder(json){
+        const movies = document.createElement('section');
         const frag = document.createDocumentFragment();
         const items = json.movies;
 
@@ -115,27 +122,32 @@ export class Shopping
         frag.appendChild(this.CreateArrowBack(JSON.parse(localStorage.getItem('checkout'))));
 
         items.forEach(elem =>{
-            frag.appendChild(this.CreateItem(elem));
+            movies.appendChild(this.CreateItem(elem));
         });
         this.dom.innerHTML = '';
+        frag.appendChild(movies);
         this.dom.appendChild(frag);
     }   
     renderOrder(obj){
         const frag = document.createDocumentFragment();
+        const orders = document.createElement('section');
         frag.appendChild(this.CreateNavbar());
         obj.forEach(element =>{
-            frag.appendChild(this.CreateOrder(element));
+            orders.appendChild(this.CreateOrder(element));
         })
         this.dom.innerHTML = '';
+        frag.appendChild(orders);
         this.dom.appendChild(frag);
         console.log(frag);
     }
     render(){
         const frag = document.createDocumentFragment();
+        const movies = document.createElement('section');
         frag.appendChild(this.CreateNavbar());
         this.movies.forEach(element => {
-                frag.appendChild(this.CreateItem(element));
+                movies.appendChild(this.CreateItem(element));
            });
+        frag.appendChild(movies);
         frag.appendChild(this.CreateBtn());
         // frag.appendChild()
         this.dom.appendChild(frag);
