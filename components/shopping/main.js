@@ -24,10 +24,23 @@ export class Shopping
         arrow.addEventListener('click', () => {this.renderOrder(json)});
         return arrow;
     }
+    CreateDetail({id,title,img}){
+        const container = document.createElement('article');
+        container.setAttribute('class', 'movie');
+        container.setAttribute('data-id', id);
+        const items = `
+        <img src="${img}" class="img">    
+        <span class="title">${title}</span>
+        <a href="/pages/product/index.html?id=${id}">Detalles</a>
+        `;
+        container.insertAdjacentHTML('afterbegin', items);
+        return container;
+    }
     CreateItem({id,title,img}){
         const container = document.createElement('article');
         container.setAttribute('class', 'movie');
         container.setAttribute('data-id', id);
+
         const items = `
         <img src="${img}" class="img">    
         <span class="title">${title}</span>
@@ -122,7 +135,7 @@ export class Shopping
         frag.appendChild(this.CreateArrowBack(JSON.parse(localStorage.getItem('checkout'))));
 
         items.forEach(elem =>{
-            movies.appendChild(this.CreateItem(elem));
+            movies.appendChild(this.CreateDetail(elem));
         });
         this.dom.innerHTML = '';
         frag.appendChild(movies);
