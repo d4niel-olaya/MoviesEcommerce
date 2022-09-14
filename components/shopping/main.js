@@ -21,6 +21,7 @@ export class Shopping
     CreateArrowBack(json){
         const arrow = document.createElement('img');
         arrow.setAttribute('src', '../../assets/icons/back-arrow-comb 2.svg');
+        arrow.setAttribute('class', 'back');
         arrow.addEventListener('click', () => {this.renderOrder(json)});
         return arrow;
     }
@@ -128,6 +129,7 @@ export class Shopping
 
     renderDetailOrder(json){
         const movies = document.createElement('section');
+        movies.setAttribute('class','movies');
         const frag = document.createDocumentFragment();
         const items = json.movies;
 

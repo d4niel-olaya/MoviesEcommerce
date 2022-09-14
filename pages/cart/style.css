@@ -126,7 +126,9 @@
 }
 
 
-
+.app .back{
+    margin-left: 1rem;
+}
 @media (min-width:768px){
     .main .login{
         max-width: 100%;
@@ -146,6 +148,12 @@
         max-width: 30%;
     }
 
+    .app .main-cart .check .chk-btn .btn-check{
+        width: 40%;
+    }
+    .app .movies .movie .img{
+        width: 15%
+    }
 }
 @media (min-width:1280px){
     .main .login{
