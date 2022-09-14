@@ -35,11 +35,15 @@ export class Movies
         header.setAttribute('class', 'header');
         const main = document.createElement('main');
         main.setAttribute('class', 'main');
+        const cart = document.createElement('div');
+        cart.setAttribute('class', 'cart');
+        cart.setAttribute('id', 'cart');
 
         const frag = document.createDocumentFragment();
         const nav = new NavBar(header);
         header.appendChild(nav.Create());
         header.appendChild(nav.CreateSearch());
+        header.appendChild(cart);
         frag.appendChild(header);
 
         this.list.forEach(element => {

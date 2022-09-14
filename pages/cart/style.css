@@ -155,13 +155,20 @@
         max-width: 25%;
     }
     .app .movies .movie{
-        border: 1px solid;
         justify-content:center;
         
     }
     .app .main-cart .movies{
         display: flex;
+        flex-direction: column;
         justify-content: center;
+    }
+
+    .app .movie .title{
+        text-align:center;
+    }
+    .app .main-cart .check .chk-btn .btn-check{
+        width: 30%;
     }
     .app .movies .movie .img{
         width: 10%

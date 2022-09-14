@@ -9,6 +9,7 @@ const app = document.getElementById('app');
 
 const list = await get('movie/popular');
 const mov = new Movies(app,list.results);
+const cart = document.getElementById('cart');
 
 // const shop = new Shopping(JSON.parse(localStorage.getItem('movies')), cart);
 // shop.render();
