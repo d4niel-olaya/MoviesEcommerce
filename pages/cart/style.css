@@ -154,4 +154,16 @@
     .main .login .submit, .entry{
         max-width: 25%;
     }
+    .app .movies .movie{
+        border: 1px solid;
+        justify-content:center;
+        
+    }
+    .app .main-cart .movies{
+        display: flex;
+        justify-content: center;
+    }
+    .app .movies .movie .img{
+        width: 10%
+    }
 }

@@ -1,4 +1,4 @@
-
+import { NavBar } from "../navbar/main";
 
 export class Movies
 {
@@ -6,6 +6,7 @@ export class Movies
         this.url =  'https://image.tmdb.org/t/p/w500';
         this.dom = dom;
         this.list = list;
+        this.render();
     }
 
     Create({id,title, backdrop_path}){
@@ -30,10 +31,21 @@ export class Movies
         })
     }
     render(){
+        const header = document.createElement('header');
+        header.setAttribute('class', 'header');
+        const main = document.createElement('main');
+        main.setAttribute('class', 'main');
+
         const frag = document.createDocumentFragment();
+        const nav = new NavBar(header);
+        header.appendChild(nav.Create());
+        header.appendChild(nav.CreateSearch());
+        frag.appendChild(header);
+
         this.list.forEach(element => {
-            frag.appendChild(this.Create(element));
+            main.appendChild(this.Create(element));
         });
+        frag.appendChild(main);
         this.dom.appendChild(frag);
     }
 }

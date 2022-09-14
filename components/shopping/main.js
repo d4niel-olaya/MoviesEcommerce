@@ -144,6 +144,7 @@ export class Shopping
     renderOrder(obj){
         const frag = document.createDocumentFragment();
         const orders = document.createElement('section');
+        orders.setAttribute('class', 'movies');
         frag.appendChild(this.CreateNavbar());
         obj.forEach(element =>{
             orders.appendChild(this.CreateOrder(element));
@@ -155,15 +156,19 @@ export class Shopping
     }
     render(){
         const frag = document.createDocumentFragment();
+        const main = document.createElement('main');
         const movies = document.createElement('section');
-        frag.appendChild(this.CreateNavbar());
+        main.setAttribute('class', 'main-cart');
+        movies.setAttribute('class', 'movies')
         this.movies.forEach(element => {
-                movies.appendChild(this.CreateItem(element));
-           });
+            movies.appendChild(this.CreateItem(element));
+        });
         frag.appendChild(movies);
         frag.appendChild(this.CreateBtn());
         // frag.appendChild()
-        this.dom.appendChild(frag);
+        main.appendChild(frag)
+        this.dom.appendChild(this.CreateNavbar());
+        this.dom.appendChild(main);
         console.log(this.dom.children);
 
     }
