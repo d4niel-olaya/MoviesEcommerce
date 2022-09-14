@@ -1,11 +1,11 @@
 
 export class Product
 {
-    constructor(obj, dom){
+    constructor(obj, dom, casting){
         this.obj = obj;
         this.url =  'https://image.tmdb.org/t/p/w500';
         this.dom = dom;
-        console.log(this.obj);
+        this.casting = casting
         this.render()
     }
 
@@ -20,14 +20,25 @@ export class Product
         container.insertAdjacentHTML('afterbegin', items);
         return container;
     }
-    render(){
+    CreateActor({name}){
+        const container = document.createElement('article');
+        container.setAttribute('class', 'actor');
+        const items = `<p>${name}</p>`;
+        container.insertAdjacentHTML('afterbegin', items);
+        return container
+    }
+    CreateRecommended(div){
         const frag = document.createDocumentFragment();
-        const containerMovies = document.createElement('section');
         this.obj.forEach(Element =>{
             frag.appendChild(this.CreateMovie(Element));
         });
-        containerMovies.appendChild(frag);
-        this.dom.appendChild(containerMovies);
+        div.appendChild(frag);
+        return div;
+    }
+    render(){
+        const containerMovies = document.createElement('section');
+        console.log(this.CreateActor(this.casting[0]));
+        this.dom.appendChild(this.CreateRecommended(containerMovies));
 
     }
 
