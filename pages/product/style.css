@@ -38,6 +38,32 @@
 }
 
 
+.app .movie{
+    max-width: 100%;
+}
+.app .recommends{
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    overflow-x:scroll;
+}
+.app .movie > img {
+    width: 80%;
+    object-fit: cover;
+
+}
+
+.app .recommends .movie{
+    max-width: 100%;
+    /* object-fit:cover; */
+}
+
+.app .recommends .movie > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .circle{
     height: 5vh;
     width: 2%;
