@@ -36,7 +36,9 @@
     width: 80%;
     
 }
-
+.left{
+    transform: rotate(-180deg);
+}
 
 .app .movie{
     display: flex;
@@ -45,6 +47,32 @@
     align-items: center;
     max-width: 100%;
 } 
+.app .carrousel{
+    display: flex;
+}
+.app .carrousel .dom-arrow{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.app .carrousel .imgs .movie-card{
+    max-width: 80%;
+    width: 50%;
+    /* border:1px solid red; */
+}
+
+.app .carrousel .imgs{
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+}
+
+.app .carrousel .imgs .movie-card > img{
+    display: block;
+    border-radius: 5%;
+}
 /* .app .recommends{
     display: flex;
     flex-direction: row;

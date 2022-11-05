@@ -1,5 +1,5 @@
 import { Render } from "../Render/main";
-
+import { CarrouselV2 } from "../carrousel/carrouselv2";
 
 
 export class Product extends Render
