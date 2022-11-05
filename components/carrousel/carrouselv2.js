@@ -20,14 +20,19 @@ export class CarrouselV2 extends Render
      */
     render() {
         const dom = this.dom;
+        const containerimg = document.createElement('div');
+        containerimg.setAttribute('class','imgs');
         const frag = document.createDocumentFragment()
         dom.appendChild(this.arrowLeft);
         this.imgs.forEach(ele =>{
             frag.appendChild(this.CreateMovieCard(ele));
         })
+        containerimg.appendChild(frag)
+        dom.appendChild(containerimg)
         dom.appendChild(frag);
         dom.appendChild(this.arrowRight)
         this.carrousel.appendChild(dom);
+        
     }
     /**
      * Returns carrousel container
@@ -58,10 +63,10 @@ export class CarrouselV2 extends Render
         const icon = document.createElement('img');
         icon.src = '../../assets/icons/arrow_rigth.svg';
         arrow.appendChild(icon);
+        this.moveCarrousel(div)
         div.appendChild(arrow);
         return div
     }
-
     /**
      * Return arrow left
      * @return {HTMLDivElement} Return arrow left
@@ -73,8 +78,18 @@ export class CarrouselV2 extends Render
         icon.style.transform = "rotate(-180deg)";
         icon.src = '../../assets/icons/arrow_rigth.svg';
         arrow.appendChild(icon);
+        this.moveCarrousel(div);
         div.appendChild(arrow);
         return div;
 
+    }
+    /**
+     * @param {HTMLDivElement} arrow
+     * @returns {Event} Onclick event
+     */
+    moveCarrousel(arrow) {
+        arrow.addEventListener('click', ()=>{
+            alert('a');
+        })
     }
 } 
