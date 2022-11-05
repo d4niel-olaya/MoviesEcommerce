@@ -39,7 +39,7 @@ export class Render
         const container = document.createElement('article');
         container.setAttribute('class', 'movie-card')
         const items =  `
-        <img src="https://image.tmdb.org/t/p/w500${backdrop_path}" alt="${title}">
+        <img class="img-card" src="https://image.tmdb.org/t/p/w500${backdrop_path}" alt="${title}">
         `
         container.insertAdjacentHTML('afterbegin', items);
         return container;

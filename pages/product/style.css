@@ -27,7 +27,7 @@
 }
 
 .app .carrousel{
-    max-width: 100%;
+    width: 100%;
     border: 1px solid;
     display: flex;
 }
@@ -64,13 +64,17 @@
 }
 
 .app .carrousel .imgs{
+    width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    flex-direction: row;
     padding: 1rem;
 }
 
 .app .carrousel .imgs .movie-card > img{
-    display: block;
+    width:350px;
+    height: 200px;
+    object-fit: cover;
     border-radius: 5%;
 }
 /* .app .recommends{

@@ -9,6 +9,7 @@ export class CarrouselV2 extends Render
     constructor(imgs, carrousel) {
         super();
         this.imgs = imgs
+        this.url = 'https://image.tmdb.org/t/p/w500'
         this.carrousel = carrousel
         this.render();
     }
@@ -24,7 +25,8 @@ export class CarrouselV2 extends Render
         containerimg.setAttribute('class','imgs');
         const frag = document.createDocumentFragment()
         dom.appendChild(this.arrowLeft);
-        this.imgs.forEach(ele =>{
+        const arr = this.imgs.slice(0,3);
+        arr.forEach(ele =>{
             frag.appendChild(this.CreateMovieCard(ele));
         })
         containerimg.appendChild(frag)
@@ -63,7 +65,7 @@ export class CarrouselV2 extends Render
         const icon = document.createElement('img');
         icon.src = '../../assets/icons/arrow_rigth.svg';
         arrow.appendChild(icon);
-        this.moveCarrousel(div)
+        this.moveToRight(div)
         div.appendChild(arrow);
         return div
     }
@@ -78,7 +80,7 @@ export class CarrouselV2 extends Render
         icon.style.transform = "rotate(-180deg)";
         icon.src = '../../assets/icons/arrow_rigth.svg';
         arrow.appendChild(icon);
-        this.moveCarrousel(div);
+        this.moveToLeft(div);
         div.appendChild(arrow);
         return div;
 
@@ -87,9 +89,35 @@ export class CarrouselV2 extends Render
      * @param {HTMLDivElement} arrow
      * @returns {Event} Onclick event
      */
-    moveCarrousel(arrow) {
+    moveToRight(arrow){
+        arrow.addEventListener('click', () =>{
+            console.log(document.querySelectorAll('.img-card'));
+            const arr = document.querySelectorAll('.img-card')
+            for(let i  = 0; i < this.imgs.length ; i++){
+                if(this.imgs[i+1].backdrop_path != null){
+                    arr[i].src = this.url + this.imgs[i+1].backdrop_path
+                }
+                // console.log(this.imgs[i].backdrop_path);
+            }
+        })
+    }
+    /**
+     * @param {HTMLDivElement} arrow
+     * @returns {Event} Onclick event
+     */
+    moveToLeft(arrow) {
         arrow.addEventListener('click', ()=>{
-            alert('a');
+            console.log(document.querySelectorAll('.img-card'));
+            const arr = document.querySelectorAll('.img-card')
+            arr[0].src = this.imgs[1].backdrop_path
+            // for(let i  = 0; i < this.imgs.length ; i++){
+            //     if(this.imgs[i].backdrop_path != null){
+            //         arr[i].src = this.imgs[i+1].backdrop_path
+            //     }
+            //     // console.log(this.imgs[i].backdrop_path);
+            // }
+            // console.log(arr[0].src)
+            // alert('a'); 
         })
     }
 } 
