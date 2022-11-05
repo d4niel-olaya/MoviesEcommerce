@@ -39,18 +39,24 @@
 
 
 .app .movie{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
     max-width: 100%;
-}
-.app .recommends{
+} 
+/* .app .recommends{
     display: flex;
     flex-direction: row;
     max-width: 100%;
     overflow-x:scroll;
+} */
+.app .movie .overview{
+    width: 80%;
 }
 .app .movie > img {
-    width: 80%;
+    width: 50%;
     object-fit: cover;
-
 }
 
 .app .recommends .movie{

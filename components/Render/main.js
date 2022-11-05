@@ -2,15 +2,27 @@
 
 export class Render
 {
-    CreateMovie({id,title,backdrop_path}, type='default')
+
+
+    /**
+     * Render movie card
+     * @param {Object} Object id, title, backdrop_path(url image), overview
+     * @param {String} type default or normal
+     * @returns {HTMLDivElement} Div element
+     */
+    CreateMovie({id,title,backdrop_path, overview}, type='default')
     {
         const container = document.createElement('article');
         let detail = `<a href="../../pages/product/index.html?id=${id}">Ver Detalles</a>`
         container.setAttribute('class', 'movie');
         if(type!="default") detail = '';
         const items = `
-        ${detail}
+        <h2>${title}</h2>
+        <div class="overview">
+            ${overview}
+        </div>
         <img src="${this.url+backdrop_path}" alt="${title}">
+        ${detail}
         `;
         container.insertAdjacentHTML('afterbegin', items);
         return container;

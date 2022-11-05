@@ -13,6 +13,11 @@ export class Product extends Render
         this.movie = movie
         this.render()
     }
+    /**
+     * 
+     * @param {HTMLElement} div 
+     * @returns  {HTMLElement}
+     */
     CreateRecommended(div){
         const frag = document.createDocumentFragment();
         this.obj.forEach(Element =>{
@@ -39,7 +44,7 @@ export class Product extends Render
         const ctn = document.createElement('section');
         console.log(this.CreateActor(this.casting[0]));
         this.dom.appendChild(this.CreateMovie(this.movie, 'normal'))
-        this.dom.appendChild(this.CreateRecommended(containerMovies));
+        // this.dom.appendChild(this.CreateRecommended(containerMovies));
         // this.dom.appendChild(this.CreateCasting(containerCasting));
     }
 
