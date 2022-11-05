@@ -1,12 +1,33 @@
-
-export class CarrouselV2
+import { Render } from "../Render/main";
+export class CarrouselV2 extends Render
 {   
     /**
      * 
      * @param {Array<JSON>} imgs 
+     * @param {HTMLDivElement} carrousel
      */
-    constructor(imgs) {
+    constructor(imgs, carrousel) {
+        super();
         this.imgs = imgs
+        this.carrousel = carrousel
+        this.render();
+    }
+    /**
+     * 
+     * Render Carrousel
+     * @returns {HTMLElement} Render HTMLElement
+     *
+     */
+    render() {
+        const dom = this.dom;
+        const frag = document.createDocumentFragment()
+        dom.appendChild(this.arrowLeft);
+        this.imgs.forEach(ele =>{
+            frag.appendChild(this.CreateMovieCard(ele));
+        })
+        dom.appendChild(frag);
+        dom.appendChild(this.arrowRight)
+        this.carrousel.appendChild(dom);
     }
     /**
      * Returns carrousel container
@@ -32,7 +53,13 @@ export class CarrouselV2
      * @returns {HTMLDivElement} Return arrow rigth
      */
     get arrowRight() {
-
+        const div = this.domArrow;
+        const arrow = document.createElement('span');
+        const icon = document.createElement('img');
+        icon.src = '../../assets/icons/arrow_rigth.svg';
+        arrow.appendChild(icon);
+        div.appendChild(arrow);
+        return div
     }
 
     /**
@@ -40,6 +67,14 @@ export class CarrouselV2
      * @return {HTMLDivElement} Return arrow left
      */
     get arrowLeft() {
+        const div = this.domArrow;
+        const arrow = document.createElement('span');
+        const icon = document.createElement('img');
+        icon.style.transform = "rotate(-180deg)";
+        icon.src = '../../assets/icons/arrow_rigth.svg';
+        arrow.appendChild(icon);
+        div.appendChild(arrow);
+        return div;
 
     }
 } 

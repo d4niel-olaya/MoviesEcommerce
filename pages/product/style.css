@@ -36,7 +36,9 @@
     width: 80%;
     
 }
-
+.left{
+    transform: rotate(-180deg);
+}
 
 .app .movie{
     display: flex;

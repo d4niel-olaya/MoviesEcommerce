@@ -10,25 +10,39 @@ export class Render
      * @param {String} type default or normal
      * @returns {HTMLDivElement} Div element
      */
+
     CreateMovie({id,title,backdrop_path, overview}, type='default')
     {
         const container = document.createElement('article');
         let detail = `<a href="../../pages/product/index.html?id=${id}">Ver Detalles</a>`
-        container.setAttribute('class', 'movie');
-        if(type!="default") detail = '';
-        const items = `
+        let info = `
         <h2>${title}</h2>
         <div class="overview">
             ${overview}
-        </div>
-        <img src="${this.url+backdrop_path}" alt="${title}">
+        </div>`
+        container.setAttribute('class', 'movie');
+        if(type!="default") detail = '';
+        const items = `
+        ${info}
+        <img src="https://image.tmdb.org/t/p/w500${backdrop_path}" alt="${title}">
         ${detail}
         `;
         container.insertAdjacentHTML('afterbegin', items);
         return container;
     }   
-
-
+    /**
+     * 
+     * @param {JSON} param0
+     * @returns {HTMLDivElement} Div element 
+     */
+    CreateMovieCard({id,title,backdrop_path, overview}){
+        const container = document.createElement('article');
+        const items =  `
+        <img src="https://image.tmdb.org/t/p/w500${backdrop_path}" alt="${title}">
+        `
+        container.insertAdjacentHTML('afterbegin', items);
+        return container;
+    }
     CreateActor({name, profile_path})
     {
         const container = document.createElement('article');
@@ -45,7 +59,13 @@ export class Render
         const ctn = document.createElement(tpCtn);
         return ctn;
     }
-
+    /**
+     * 
+     * @param {HTMLElement} container 
+     * @param {JSON} obj 
+     * @param {Function} method 
+     * @returns 
+     */
     CreateItems(container, obj, method)
     {
         const frag = document.createDocumentFragment();
