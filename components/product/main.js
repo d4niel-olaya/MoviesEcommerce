@@ -4,6 +4,13 @@ import { CarrouselV2 } from "../carrousel/carrouselv2";
 
 export class Product extends Render
 {
+    /**
+     * 
+     * @param {Array} obj 
+     * @param {HTMLElement} dom 
+     * @param {Array} casting 
+     * @param {Array} movie 
+     */
     constructor(obj, dom, casting, movie){
         super()
         this.obj = obj;
@@ -12,6 +19,7 @@ export class Product extends Render
         this.casting = casting
         this.movie = movie
         this.render()
+        this.renderCarrousel()
     }
     /**
      * 
@@ -47,7 +55,36 @@ export class Product extends Render
         // this.dom.appendChild(this.CreateRecommended(containerMovies));
         // this.dom.appendChild(this.CreateCasting(containerCasting));
     }
-
-
+    /**
+     * Render Carrousel (splidejs)
+     * @render 
+     */
+    renderCarrousel(){
+        const imgs = this.obj.map(this.createImg)
+        const schema = `
+            <div class="splide__track">
+                <ul class="splide__list">
+                    ${imgs.join('')}
+                </ul>
+            </div>
+        `
+        const div = document.createElement('section');
+        div.setAttribute('class', 'splide')
+        div.insertAdjacentHTML('afterbegin', schema)
+        this.dom.appendChild(div);
+        
+        
+    }
+    /**
+     * Generate img
+     * @param {Object} Data
+     * @returns {InnerHTML}
+     */
+    createImg = ({title,backdrop_path}) =>{
+        return `
+                <li class="splide__slide">
+                    <img src="${this.url}${backdrop_path}" alt="${title}">
+                </li>`
+    }
 }
 
