@@ -19,7 +19,8 @@ export class Product extends Render
         this.casting = casting
         this.movie = movie
         this.render()
-        this.renderCarrousel()
+        this.renderRecommends()
+        this.renderCast()
     }
     /**
      * 
@@ -51,40 +52,73 @@ export class Product extends Render
         const containerCasting = document.createElement('section');
         const ctn = document.createElement('section');
         console.log(this.CreateActor(this.casting[0]));
-        this.dom.appendChild(this.CreateMovie(this.movie, 'normal'))
-        // this.dom.appendChild(this.CreateRecommended(containerMovies));
-        // this.dom.appendChild(this.CreateCasting(containerCasting));
     }
     /**
      * Render Carrousel (splidejs)
-     * @render 
+     * @returns {void}
      */
-    renderCarrousel(){
+    renderRecommends(){
         const imgs = this.obj.map(this.createImg)
         const schema = `
-            <div class="splide__track">
-                <ul class="splide__list">
+            <div class="slider1 splide__track">
+                <ul class="slider1 splide__list">
                     ${imgs.join('')}
                 </ul>
             </div>
         `
+        const title = `
+            <h1 style="text-align:center">Peliculas recomendadas</h1>
+        `;
         const div = document.createElement('section');
-        div.setAttribute('class', 'splide')
+        div.setAttribute('class', 'slider1 splide')
+        div.setAttribute('role', 'group')
         div.insertAdjacentHTML('afterbegin', schema)
+        div.insertAdjacentHTML('afterbegin', title)
         this.dom.appendChild(div);
-        
-        
+        console.log(this.casting)
     }
     /**
      * Generate img
      * @param {Object} Data
-     * @returns {InnerHTML}
+     * @returns {InnerHTML} splide li
      */
-    createImg = ({title,backdrop_path}) =>{
+    createImg = ({title,backdrop_path, overview}) =>{
         return `
-                <li class="splide__slide">
+                <li class="slider1 splide__slide">
                     <img src="${this.url}${backdrop_path}" alt="${title}">
+                    <div style="text-align:center">
+                        ${title}
+                    </div>
                 </li>`
+    }
+    /**
+     * 
+     * @param {Object} Objeto
+     * @returns {InnerHTML} String HTML
+     */
+    createActor = ({id,name,profile_path}) =>{
+        return `
+            <li class="casting splide__slide">
+                <img src="${this.url}${profile_path}" alt="${name}">
+            </li>
+        `
+    }
+
+    renderCast(){
+        const cast = this.casting.map(this.createActor);
+        const schema = `
+            <div class="casting splide__track">
+                <ul class="casting splide__list">
+                
+                ${cast.join('')}
+                </ul>
+            </div>
+        `
+        const $section = document.createElement('section');
+        $section.setAttribute('class', 'casting splide')
+        $section.insertAdjacentHTML("afterbegin", schema);
+        this.dom.appendChild($section);
+        console.log(cast.join('').trim());
     }
 }
 
