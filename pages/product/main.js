@@ -16,14 +16,3 @@ const mv = await get(`movie/${id}`);
 const movie = await get(`movie/${id}/recommendations`);
 const casting = await get(`movie/${id}/credits`);
 const producto = new Product(movie.results, app, casting.cast, mv)
-new Splide('.slider1' ,{
-    perPage:2,
-    breakpoints:{
-        640:{
-            perPage:1
-        }
-    }
-}).mount();
-
-
-new Splide('.casting').mount();
