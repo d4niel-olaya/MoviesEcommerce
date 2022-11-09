@@ -19,7 +19,8 @@ export class Product extends Render
         this.casting = casting
         this.movie = movie
         this.render()
-        this.renderCarrousel()
+        this.renderRecommends()
+        this.renderCast()
     }
     /**
      * 
@@ -50,41 +51,96 @@ export class Product extends Render
         containerMovies.setAttribute('class', 'recommends')
         const containerCasting = document.createElement('section');
         const ctn = document.createElement('section');
-        console.log(this.CreateActor(this.casting[0]));
         this.dom.appendChild(this.CreateMovie(this.movie, 'normal'))
-        // this.dom.appendChild(this.CreateRecommended(containerMovies));
-        // this.dom.appendChild(this.CreateCasting(containerCasting));
+        console.log(this.CreateActor(this.casting[0]));
     }
     /**
      * Render Carrousel (splidejs)
-     * @render 
+     * @returns {void}
      */
-    renderCarrousel(){
+    renderRecommends(){
         const imgs = this.obj.map(this.createImg)
         const schema = `
-            <div class="splide__track">
-                <ul class="splide__list">
-                    ${imgs.join('')}
-                </ul>
+            <div class="carousel-inner">
+                ${imgs.join('')}
+                <button class="carousel-control-prev" type="button" data-bs-target="#recomendados" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#recomendados" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         `
-        const div = document.createElement('section');
-        div.setAttribute('class', 'splide')
+        const title = `
+            <h1 style="text-align:center">Peliculas recomendadas</h1>
+        `;
+        const div = document.createElement('div');
+        div.setAttribute('id', 'recomendados');
+        div.setAttribute('class', 'carousel slide')
+        // div.setAttribute('role', 'group')
+        div.setAttribute('data-bs-ride', 'carousel');
         div.insertAdjacentHTML('afterbegin', schema)
+        div.insertAdjacentHTML('afterbegin', title)
         this.dom.appendChild(div);
-        
-        
+        console.log(this.casting)
     }
     /**
      * Generate img
      * @param {Object} Data
-     * @returns {InnerHTML}
+     * @returns {InnerHTML} splide li
      */
-    createImg = ({title,backdrop_path}) =>{
+    createImg = ({id,title,backdrop_path, overview}) =>{
+        let act = '';
+        if(this.obj[0].id == id) act = 'active'
         return `
-                <li class="splide__slide">
-                    <img src="${this.url}${backdrop_path}" alt="${title}">
-                </li>`
+            <div class="carousel-item ${act}">
+                <a href="?id=${id}" style="display:block">
+                    <img src="${this.url}${backdrop_path}" class="d-block w-100" alt="${title}">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>${title}</h5>
+                        <p>${overview}</p>
+                    </div>
+                </a>
+            </div>`
+    }
+    /**
+     * 
+     * @param {Object} Objeto
+     * @returns {InnerHTML} String HTML
+     */
+    createActor = ({id,name,profile_path}) =>{
+        return `
+            <li class="splide__slide">
+                <img src="${this.url}${profile_path}" alt="${name}">
+                <div style="text-align:center">
+                    ${name}
+                </div>
+            </li>
+        `
+    }
+    /**
+     * Render Casting
+     * @returns {void}
+     */
+    renderCast(){
+        const cast = this.casting.map(this.createActor);
+        const schema = `
+            <div class="splide__track">
+                <ul class="splide__list">
+                    ${cast.join('')}
+                </ul>
+            </div>
+        `
+        const $section = document.createElement('section');
+        const $title = `<h1 style="text-align:center">Casting</h1>` // TíTulo (casting)
+        $section.setAttribute('class', 'splide')
+        $section.setAttribute('id', 'casting')
+        $section.insertAdjacentHTML("afterbegin", schema);
+        $section.insertAdjacentHTML("afterbegin", $title);
+        this.dom.appendChild($section);
+        console.log(cast.join('').trim());
     }
 }
 
