@@ -19,8 +19,8 @@ export class Product extends Render
         this.casting = casting
         this.movie = movie
         this.render()
-        this.renderRecommends()
-        this.renderCast()
+        // this.renderRecommends()
+        // this.renderCast()
     }
     /**
      * 
@@ -45,14 +45,25 @@ export class Product extends Render
         div.appendChild(frag)
         return div;
     }
-    
+    /**
+     * Render main movie, recommended and casting
+     * @render HTMLElement
+     * @return {void}
+     */
     render(){
+        const frag = document.createDocumentFragment();
         const containerMovies = document.createElement('section');
         containerMovies.setAttribute('class', 'recommends')
         const containerCasting = document.createElement('section');
         const ctn = document.createElement('section');
-        this.dom.appendChild(this.CreateMovie(this.movie, 'normal'))
-        console.log(this.CreateActor(this.casting[0]));
+        frag.appendChild(this.CreateMovie(this.movie, 'normal'))
+        this.obj.forEach(el => { // Rendering Recommended movies
+            frag.appendChild(this.CreateMovieCard(el))
+        })
+        this.casting.forEach(el => {
+            frag.appendChild(this.CreateActor(el))
+        })
+        this.dom.appendChild(frag);
     }
     /**
      * Render Carrousel (splidejs)
