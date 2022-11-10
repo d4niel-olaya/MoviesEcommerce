@@ -41,59 +41,44 @@
 }
 
 .app .movie{
+    max-width: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
-    max-width: 100%;
 } 
-.app .carrousel{
-    display: flex;
-}
-.app .carrousel .dom-arrow{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 1rem;
-}
 
-.app .carrousel .imgs .movie-card{
-    max-width: 80%;
-    width: 50%;
-    /* border:1px solid red; */
-}
-
-.app .carrousel .imgs{
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
-    padding: 1rem;
-}
-
-.app .carrousel .imgs .movie-card > img{
-    width:350px;
-    height: 200px;
+.app .movie > img {
+    width: 60%;
     object-fit: cover;
-    border-radius: 5%;
 }
+
+.app .movie .overview{
+    width: 80%;
+    text-align: justify;
+}
+
 /* .app .recommends{
     display: flex;
     flex-direction: row;
     max-width: 100%;
     overflow-x:scroll;
 } */
-.app .movie .overview{
-    width: 80%;
+.app .recommends{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
 }
-.app .movie > img {
-    width: 50%;
-    object-fit: cover;
+.app .recommends .movie-card{
+    display:flex;
+    width: 100%;
+    justify-content: center;
 }
 
-.app .recommends .movie{
-    max-width: 100%;
-    /* object-fit:cover; */
+.app .recommends .movie-card > img{
+    width: 80%;
+    object-fit: cover;
 }
 
 .app .recommends .movie > img{
@@ -102,21 +87,5 @@
     object-fit: cover;
 }
 
-.circle{
-    height: 5vh;
-    width: 2%;
-    border: 1px solid;
-    border-radius: 50%;
-}
 
-.app .splide{
-    max-width: 100%;
-    width: 80%;
-    margin: 0 auto;
-}
-
-.splide__slide img {
-    width: 100%;
-    height: auto;
-  }
 

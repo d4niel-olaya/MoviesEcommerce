@@ -51,19 +51,23 @@ export class Product extends Render
      * @return {void}
      */
     render(){
-        const frag = document.createDocumentFragment();
+        const fragR = document.createDocumentFragment();
+        const fragCast = document.createDocumentFragment();
         const containerMovies = document.createElement('section');
         containerMovies.setAttribute('class', 'recommends')
         const containerCasting = document.createElement('section');
-        const ctn = document.createElement('section');
-        frag.appendChild(this.CreateMovie(this.movie, 'normal'))
+        containerCasting.setAttribute('class', 'casting');;
+        this.dom.appendChild(this.CreateMovie(this.movie, 'normal'))
         this.obj.forEach(el => { // Rendering Recommended movies
-            frag.appendChild(this.CreateMovieCard(el))
+            fragR.appendChild(this.CreateMovieCard(el))
         })
         this.casting.forEach(el => {
-            frag.appendChild(this.CreateActor(el))
+            fragCast.appendChild(this.CreateActor(el))
         })
-        this.dom.appendChild(frag);
+        containerMovies.appendChild(fragR);
+        containerCasting.appendChild(fragCast);
+        this.dom.appendChild(containerMovies);
+        // this.dom.appendChild(containerCasting);
     }
     /**
      * Render Carrousel (splidejs)
