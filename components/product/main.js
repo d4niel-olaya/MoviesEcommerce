@@ -56,7 +56,7 @@ export class Product extends Render
         const containerMovies = document.createElement('section');
         containerMovies.setAttribute('class', 'recommends')
         const containerCasting = document.createElement('section');
-        containerCasting.setAttribute('class', 'casting');;
+        containerCasting.setAttribute('class', 'casting');
         this.dom.appendChild(this.CreateMovie(this.movie, 'normal'))
         this.obj.forEach(el => { // Rendering Recommended movies
             fragR.appendChild(this.CreateMovieCard(el))
@@ -67,7 +67,7 @@ export class Product extends Render
         containerMovies.appendChild(fragR);
         containerCasting.appendChild(fragCast);
         this.dom.appendChild(containerMovies);
-        // this.dom.appendChild(containerCasting);
+        this.dom.appendChild(containerCasting);
     }
     /**
      * Render Carrousel (splidejs)
