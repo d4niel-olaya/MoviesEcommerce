@@ -103,4 +103,9 @@
     object-fit: cover;
 }
 
-
+@media(min-width:720px){
+    .app .recommends .movie-card > img{
+        width: 50%;
+        object-fit: cover;
+    }
+}
