@@ -63,7 +63,7 @@ export class Product extends Render
         })
         this.casting.forEach(el => {
             fragCast.appendChild(this.CreateActor(el))
-        })
+        }) 
         containerMovies.appendChild(fragR);
         containerCasting.appendChild(fragCast);
         this.dom.appendChild(containerMovies);
