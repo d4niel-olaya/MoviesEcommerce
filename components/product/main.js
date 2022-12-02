@@ -13,11 +13,11 @@ export class Product extends Render
      */
     constructor(obj, dom, casting, movie){
         super()
-        this.obj = obj;
-        this.url =  'https://image.tmdb.org/t/p/w500';
-        this.dom = dom;
-        this.casting = casting
-        this.movie = movie
+        this.obj = obj; // Movies recommended array
+        this.url =  'https://image.tmdb.org/t/p/w500'; // Url api
+        this.dom = dom; // Main div
+        this.casting = casting // Casting array
+        this.movie = movie // Movie
         this.render()
         // this.renderRecommends()
         // this.renderCast()
@@ -30,7 +30,7 @@ export class Product extends Render
     CreateRecommended(div){
         const frag = document.createDocumentFragment();
         this.obj.forEach(Element =>{
-            frag.appendChild(this.CreateMovie(Element, 'default'));
+            frag.appendChild(this.CreateMovieCard(Element));
         });
         div.appendChild(frag);
         return div;
@@ -46,6 +46,26 @@ export class Product extends Render
         return div;
     }
     /**
+     * Render Casting
+     * @param {HTMLDivElement} mainDom Div container
+     * 
+     */
+    renderCasting(mainDom){
+        const container = document.createElement('section')
+        container.setAttribute('class', 'casting');
+        mainDom.appendChild(this.CreateCasting(container))
+    }
+    /**
+     * Render Recommends movies
+     * @param {HTMLDivElement} mainDom Div container
+     * @param {Array} array Api query (Movie recommends)
+     */
+    renderRecommends(mainDom){
+        const container = document.createElement('section');
+        container.setAttribute('class', 'recommends');
+        mainDom.appendChild(this.CreateRecommended(container))
+    }   
+    /**
      * Render main movie, recommended and casting
      * @render HTMLElement
      * @return {void}
@@ -58,22 +78,23 @@ export class Product extends Render
         const containerCasting = document.createElement('section');
         containerCasting.setAttribute('class', 'casting');
         this.dom.appendChild(this.CreateMovie(this.movie, 'normal'))
-        this.obj.forEach(el => { // Rendering Recommended movies
-            fragR.appendChild(this.CreateMovieCard(el))
-        })
-        this.casting.forEach(el => {
-            fragCast.appendChild(this.CreateActor(el))
-        }) 
-        containerMovies.appendChild(fragR);
+        // this.obj.forEach(el => { // Rendering Recommended movies
+        //     fragR.appendChild(this.CreateMovieCard(el))
+        // })
+        // this.casting.forEach(el => {
+        //     fragCast.appendChild(this.CreateActor(el))
+        // }) 
+        // containerMovies.appendChild(fragR);
         containerCasting.appendChild(fragCast);
-        this.dom.appendChild(containerMovies);
-        this.dom.appendChild(containerCasting);
+        // this.dom.appendChild(containerMovies);
+        this.renderRecommends(this.dom)
+        this.renderCasting(this.dom)
     }
     /**
      * Render Carrousel (splidejs)
      * @returns {void}
      */
-    renderRecommends(){
+    renderRecommendsCar(){
         const imgs = this.obj.map(this.createImg)
         const schema = `
             <div class="carousel-inner">
@@ -139,7 +160,7 @@ export class Product extends Render
      * Render Casting
      * @returns {void}
      */
-    renderCast(){
+    renderCastCar(){
         const cast = this.casting.map(this.createActor);
         const schema = `
             <div class="splide__track">
