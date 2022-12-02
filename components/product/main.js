@@ -1,7 +1,6 @@
 import { Render } from "../Render/main";
 import { CarrouselV2 } from "../carrousel/carrouselv2";
-
-
+import { CarrouselBootstrap } from "../carrousel/carrousel_bootstrap";
 export class Product extends Render
 {
     /**
@@ -10,14 +9,16 @@ export class Product extends Render
      * @param {HTMLElement} dom 
      * @param {Array} casting 
      * @param {Array} movie 
+     * @param {Class<CarrouselBootstrap>} carrousel
      */
-    constructor(obj, dom, casting, movie){
+    constructor(obj, dom, casting, movie, carrousel){
         super()
         this.obj = obj; // Movies recommended array
         this.url =  'https://image.tmdb.org/t/p/w500'; // Url api
         this.dom = dom; // Main div
         this.casting = casting // Casting array
         this.movie = movie // Movie
+        this.carrousel = carrousel
         this.render()
         // this.renderRecommends()
         // this.renderCast()
