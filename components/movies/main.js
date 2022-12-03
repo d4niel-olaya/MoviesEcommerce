@@ -2,6 +2,11 @@ import { NavBar } from "../navbar/main";
 
 export class Movies
 {
+    /**
+     * 
+     * @param {HTMLDivElement} dom  Div element
+     * @param {Array} list Movies Array
+     */
     constructor(dom, list){
         this.url =  'https://image.tmdb.org/t/p/w500';
         this.dom = dom;
@@ -40,6 +45,11 @@ export class Movies
             localStorage.setItem('movies', JSON.stringify(movies));
         })
     }
+    /**
+     * 
+     * Render navbar and movies
+     * @render Shop View
+     */
     render(){
         const header = document.createElement('header');
         header.setAttribute('class', 'header');
@@ -51,15 +61,15 @@ export class Movies
 
         const frag = document.createDocumentFragment();
         const nav = new NavBar(header);
-        header.appendChild(nav.Create());
-        header.appendChild(nav.CreateSearch());
-        header.appendChild(cart);
-        frag.appendChild(header);
+        header.appendChild(nav.Create()); // Adding Navbar Component
+        header.appendChild(nav.CreateSearch()); // Adding Search input
+        header.appendChild(cart); // Adding shoppingCart div
+        frag.appendChild(header); // Adding Header to frag
 
-        this.list.forEach(element => {
+        this.list.forEach(element => { // Looping over the Movie list
             main.appendChild(this.Create(element));
         });
-        frag.appendChild(main);
-        this.dom.appendChild(frag);
+        frag.appendChild(main); // Adding MainElement with movies created
+        this.dom.appendChild(frag); // Adding fragment to dom
     }
 }
