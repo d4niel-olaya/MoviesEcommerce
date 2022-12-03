@@ -11,9 +11,11 @@ const app = document.getElementById('app');
 const mv = await get(`movie/${id}`);
 const movie = await get(`movie/${id}/recommendations`);
 const casting = await get(`movie/${id}/credits`);
-const producto = new Product(movie.results, app, casting.cast, mv)
+// const producto = new Product(movie.results, app, casting.cast, mv)
 
-const bott = new CarrouselBootstrap('casting',casting.cast)
-console.log(casting.cast)
-// bott.indicators(10);
-bott.containerItems()
+const carr = new CarrouselBootstrap('actores', casting.cast)
+app.appendChild(carr.createSchema())
+
+
+
+

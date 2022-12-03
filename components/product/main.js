@@ -11,14 +11,14 @@ export class Product extends Render
      * @param {Array} movie 
      * @param {Class<CarrouselBootstrap>} carrousel
      */
-    constructor(obj, dom, casting, movie, carrousel){
+    constructor(obj, dom, casting, movie){
         super()
         this.obj = obj; // Movies recommended array
         this.url =  'https://image.tmdb.org/t/p/w500'; // Url api
         this.dom = dom; // Main div
         this.casting = casting // Casting array
         this.movie = movie // Movie
-        this.carrousel = carrousel
+        this.carrousel = new CarrouselBootstrap('casting', this.casting)
         this.render()
         // this.renderRecommends()
         // this.renderCast()
@@ -90,6 +90,8 @@ export class Product extends Render
         // this.dom.appendChild(containerMovies);
         this.renderRecommends(this.dom)
         this.renderCasting(this.dom)
+        console.log(this.carrousel.createSchema())
+        this.dom.appendChild(this.carrousel.createSchema())
     }
     /**
      * Render Carrousel (splidejs)

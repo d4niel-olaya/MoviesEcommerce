@@ -13,26 +13,34 @@ export class CarrouselBootstrap{
      */
     constructor(id, casting){
         this.id = id // Main container id
-        this.url= `https://image.tmdb.org/t/p/w500` // Url api to images
         this.casting = casting // Casting Array
-        console.log(this.url)
+        this.firts = casting[0].name
+        this.url= `https://image.tmdb.org/t/p/w500` // Url api to images
     }
     /**
      * Method to create a carrousel Item
     * @param {object} 
     * @returns {HTMLDivElement} Carrousel item
      */
-    createItem({id,name, profile_path}){
-        let img = ``;
+    createItem({id,name,profile_path}){
+        let params = { // object with proterties that prolly will be changed
+            active:'carousel-item',
+            img:'',
+            link:''
+        }
+        if(this.firts === name){
+            params.active = 'carousel-item active'
+        }
+        
         if(profile_path === null){
-            img=`<p class="d-block w-100">There´s not image/p>`;
+            params.img=`<p class="d-block w-100">There´s not image/p>`;
         }else{
-            const link = 'https://image.tmdb.org/t/p/w500' + profile_path
-            img = `<img src="${link}" class="d-block w-100" alt="${name}">`
+            params.link = 'https://image.tmdb.org/t/p/w500' + profile_path
+            params.img = `<img src="${params.link}" class="d-block w-100" alt="${name}">`
         }
         const sch = `
-            <div class="carrousel-item">
-                ${img}
+            <div class="${params.active}">
+                ${params.img}
                 <div class="carousel-caption d-none d-md-block">
                     <h5>${name}</h5>
                 </div>
@@ -50,7 +58,7 @@ export class CarrouselBootstrap{
         let buttons = []; // buttons array
         for(let i=0; i < this.casting.length; i++){  // Loop to generate all buttons
             let button;
-            if(i === 1){ // Validating if the current iterator is equal to 1
+            if(i === 0){ // Validating if the current iterator is equal to 1
                 button = `<button type="button" data-bs-target="#${this.id}" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide ${i}"></button>`
             }
             else{
@@ -60,7 +68,7 @@ export class CarrouselBootstrap{
         }
         // adding buttons
         const container = `
-            <div class="carrousel-indicators">
+            <div class="carousel-indicators">
                 ${buttons.join('')}
             </div>           
         `
@@ -72,12 +80,24 @@ export class CarrouselBootstrap{
      * @returns {HTMLDivElement} Container
      */
     containerItems(){
-        let items = this.casting.map(this.createItem)
+        let items = [] // Actors array
+        this.casting.forEach(element =>{
+            items.push(this.createItem(element))
+        })
+        console.log(items)
         console.log(items.join(''));
         const container = `
-            <div class="carrousel-inner">
+            <div class="carousel-inner">
                 ${items.join('')}
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#${this.id}" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#${this.id}" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         `
         return container
     }
@@ -88,9 +108,11 @@ export class CarrouselBootstrap{
     createSchema(){
         const container = document.createElement('div');
         container.setAttribute('id', this.id);
-        container.setAttribute('class', 'carrousel-slide')
-        container.setAttribute('data-bs-ride', 'true')
-        return container
+        container.setAttribute('class', 'carousel slide')
+        container.setAttribute('data-bs-ride', 'false')
+        container.innerHTML = this.indicators() + this.containerItems()
+        console.log(container);
+        return container;
     }
 
 }
