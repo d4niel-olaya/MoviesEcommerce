@@ -31,13 +31,10 @@ export class CarrouselBootstrap{
         if(this.firts === name){
             params.active = 'carousel-item active'
         }
-        
-        if(profile_path === null){
-            params.img=`<p class="d-block w-100">There´s not image/p>`;
-        }else{
-            params.link = 'https://image.tmdb.org/t/p/w500' + profile_path
-            params.img = `<img src="${params.link}" class="d-block w-100" alt="${name}">`
-        }
+
+        params.link = 'https://image.tmdb.org/t/p/w500' + profile_path
+        params.img = `<img src="${params.link}" class="d-block w-100" alt="${name}">`
+
         const sch = `
             <div class="${params.active}">
                 ${params.img}
