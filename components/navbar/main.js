@@ -1,10 +1,18 @@
 
 
 export class NavBar
-{
+{   
+    /**
+     * 
+     * @param {HTMLDivElement} dom  Main div 
+     */
     constructor(dom){
-        this.dom = dom;
+        this.dom = dom; // Div
     }
+    /**
+     * Create navbar 
+     * @returns {HTMLDivElement} Navbar with icons
+     */
     Create(){
         const container = document.createElement('section');
         container.setAttribute('class', 'nav-items');
@@ -14,6 +22,10 @@ export class NavBar
         <a href="../../pages/cart/index.html?cart=true"><img src="../../assets/icons/icon_shopping_cart.svg"></a>`
         return container;
     }
+    /**
+     * Create Searc input
+     * @returns {HTMLDivElement} Div with input type search
+     */
     CreateSearch(){
         const container = document.createElement('div');
         container.setAttribute('class', 'search'); 
@@ -22,6 +34,10 @@ export class NavBar
         `
         return container;
     }
+    /**
+     * Create Navbar for a shoppinCart view
+     * @returns {HTMLHeadElement} Navbar
+     */
     CreateCartNav(){
         const container = document.createElement('header');
         container.setAttribute('class', 'header-cart');
@@ -31,11 +47,21 @@ export class NavBar
         `;
         return container;
     }
+
+    /**
+     * Render Navbar for a shoppingCart view
+     * @render Header Element
+     */
     renderCart(){
         const frag = document.createDocumentFragment();
         frag.appendChild(this.CreateCartNav());
         this.dom.appendChild(frag);
     }
+
+    /**
+     * Render Navbar for a shop view
+     * @render Header Element
+     */
     render(){
         const frag = document.createDocumentFragment();
         frag.append(this.Create());
