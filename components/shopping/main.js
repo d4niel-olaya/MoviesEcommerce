@@ -167,7 +167,6 @@ export class Shopping
         });
         frag.appendChild(movies);
         frag.appendChild(this.CreateBtn());
-        // frag.appendChild()
         main.appendChild(frag)
         this.dom.appendChild(this.CreateNavbar());
         this.dom.appendChild(main);

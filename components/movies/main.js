@@ -8,7 +8,11 @@ export class Movies
         this.list = list;
         this.render();
     }
-
+    /**
+     * Method to create an movie card
+     * @param {object} movieJSON
+     * @returns {HTMLElement} Article (movie card)
+     */
     Create({id,title, backdrop_path}){
         const card = document.createElement('article');
         card.setAttribute('class', 'movie');
@@ -17,16 +21,22 @@ export class Movies
         <img src="${this.url+backdrop_path}" class="img">
         <button id="${id}" class="add">Add to card</button>`;
         card.insertAdjacentHTML('afterbegin', items);
-        const btn = card.children[2];
-        const name = card.children[0];
-        const img = card.children[1];
-        this.AddToCart(btn,name,img);
+        const btn = card.children[2]; // getting button
+        this.AddToCart(btn,title,this.url+backdrop_path);
         return card;
     }
+    /**
+     * Add movie to card
+     * I passed a button to add it onclick event
+     * 
+     * @param {HTMLButtonElement} movie // Button 
+     * @param {string} name // Movie name
+     * @param {string} img // Movie img
+     */
     AddToCart(movie,name,img){
         movie.addEventListener('click', () =>{
             const movies = JSON.parse(localStorage.getItem('movies'));
-            movies.push({id:movie.id, title:name.textContent, img:img.src});
+            movies.push({id:movie.id, title:name, img:img});
             localStorage.setItem('movies', JSON.stringify(movies));
         })
     }

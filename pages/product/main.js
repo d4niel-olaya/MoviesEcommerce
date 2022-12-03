@@ -13,8 +13,7 @@ const movie = await get(`movie/${id}/recommendations`);
 const casting = await get(`movie/${id}/credits`);
 // const producto = new Product(movie.results, app, casting.cast, mv)
 const actors = casting.cast.filter(element => element.profile_path != null);
-console.log(actors);
-const carr = new CarrouselBootstrap('actores', actors.slice(0,10), app)
+const carrousel = new CarrouselBootstrap('actores', actors.slice(0,10), app)
 
 
 
