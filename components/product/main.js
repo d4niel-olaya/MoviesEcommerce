@@ -90,8 +90,8 @@ export class Product extends Render
         // this.dom.appendChild(containerMovies);
         this.renderRecommends(this.dom)
         this.renderCasting(this.dom)
-        console.log(this.carrousel.createSchema())
-        this.dom.appendChild(this.carrousel.createSchema())
+        console.log(this.carrousel.createSchema)
+        this.dom.appendChild(this.carrousel.createSchema)
     }
     /**
      * Render Carrousel (splidejs)

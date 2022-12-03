@@ -10,12 +10,15 @@ export class CarrouselBootstrap{
      * 
      * @param {string} id CSS id
      * @param {Array} casting Api query (casting by movie)
+     * @param {HTMLDivElement} dom Div
      */
-    constructor(id, casting){
+    constructor(id, casting, dom){
         this.id = id // Main container id
         this.casting = casting // Casting Array
+        this.dom = dom // Div container 
         this.firts = casting[0].name
         this.url= `https://image.tmdb.org/t/p/w500` // Url api to images
+        this.renderSchema()
     }
     /**
      * Method to create a carrousel Item
@@ -28,7 +31,7 @@ export class CarrouselBootstrap{
             img:'',
             link:''
         }
-        if(this.firts === name){
+        if(this.firts === name){ // Validating if the object passed, its the first in the casting array 
             params.active = 'carousel-item active'
         }
 
@@ -39,7 +42,7 @@ export class CarrouselBootstrap{
             <div class="${params.active}">
                 ${params.img}
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>${name}</h5>
+                    <h3>${name}</h3>
                 </div>
             </div>
         `   
@@ -102,7 +105,7 @@ export class CarrouselBootstrap{
      * Method to create a main schema
      * @returns {HTMLDivElement} Container carrousel
      */
-    createSchema(){
+    get createSchema(){
         const container = document.createElement('div');
         container.setAttribute('id', this.id);
         container.setAttribute('class', 'carousel slide')
@@ -110,6 +113,16 @@ export class CarrouselBootstrap{
         container.innerHTML = this.indicators() + this.containerItems()
         console.log(container);
         return container;
+    }
+    /**
+     * Method to render the Carrousel in the dom
+     * @render Carrousel
+     */
+    renderSchema(){
+        const carrousel = document.createElement('div');
+        carrousel.setAttribute('class', 'w-25 mx-auto') // Bootstrap class
+        carrousel.appendChild(this.createSchema)
+        this.dom.appendChild(carrousel);
     }
 
 }
