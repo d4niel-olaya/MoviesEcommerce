@@ -78,20 +78,4 @@ export class Render
         const ctn = document.createElement(tpCtn);
         return ctn;
     }
-    /**
-     * 
-     * @param {HTMLElement} container 
-     * @param {JSON} obj 
-     * @param {Function} method 
-     * @returns 
-     */
-    CreateItems(container, obj, method)
-    {
-        const frag = document.createDocumentFragment();
-        obj.forEach(element => {
-            frag.appendChild(method);
-        });
-        container.appendChild(frag)
-        return container;
-    }
 }
