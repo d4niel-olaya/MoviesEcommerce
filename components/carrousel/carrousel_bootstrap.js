@@ -11,13 +11,15 @@ export class CarrouselBootstrap{
      * @param {string} id CSS id
      * @param {Array} casting Api query (casting by movie)
      * @param {HTMLDivElement} dom Div
+     * @param {string} titleSection Title of carrousel in the dom
      */
-    constructor(id, casting, dom){
+    constructor(id, casting, dom, titleSection){
         this.id = id // Main container id
         this.casting = casting // Casting Array
         this.dom = dom // Div container 
         this.firts = casting[0].name || casting[0].title
         this.url= `https://image.tmdb.org/t/p/w500` // Url api to images
+        this.titleSection = titleSection 
         this.renderSchema()
     }
     /**
@@ -74,7 +76,14 @@ export class CarrouselBootstrap{
         `
         return container
     }
-
+    /**
+     * Returns a h3 title
+     * @returns {InnerHTML} title
+     */
+    get createTitle(){
+        const title = `<h3 style="text-align:center">${this.titleSection}</h3>`;
+        return title
+    }
     /**
      * Method that returns Items Carrousel container
      * @returns {HTMLDivElement} Container
@@ -110,7 +119,9 @@ export class CarrouselBootstrap{
         container.setAttribute('id', this.id);
         container.setAttribute('class', 'carousel slide')
         container.setAttribute('data-bs-ride', 'false')
-        container.innerHTML = this.indicators() + this.containerItems()
+        container.insertAdjacentHTML('afterbegin', this.createTitle)
+        container.insertAdjacentHTML('beforeend', this.indicators() + this.containerItems())
+        // container.innerHTML = this.indicators() + this.containerItems()
         console.log(container);
         return container;
     }

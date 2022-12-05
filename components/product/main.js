@@ -9,7 +9,6 @@ export class Product extends Render
      * @param {HTMLElement} dom 
      * @param {Array} casting 
      * @param {Array} movie 
-     * @param {Class<CarrouselBootstrap>} carrousel
      */
     constructor(obj, dom, casting, movie){
         super()
@@ -18,7 +17,6 @@ export class Product extends Render
         this.dom = dom; // Main div
         this.casting = casting // Casting array
         this.movie = movie // Movie
-        this.carrousel = new CarrouselBootstrap('casting', this.casting)
         this.render()
         // this.renderRecommends()
         // this.renderCast()
@@ -78,20 +76,7 @@ export class Product extends Render
         containerMovies.setAttribute('class', 'recommends')
         const containerCasting = document.createElement('section');
         containerCasting.setAttribute('class', 'casting');
-        this.dom.appendChild(this.CreateMovie(this.movie, 'normal'))
-        // this.obj.forEach(el => { // Rendering Recommended movies
-        //     fragR.appendChild(this.CreateMovieCard(el))
-        // })
-        // this.casting.forEach(el => {
-        //     fragCast.appendChild(this.CreateActor(el))
-        // }) 
-        // containerMovies.appendChild(fragR);
-        containerCasting.appendChild(fragCast);
-        // this.dom.appendChild(containerMovies);
-        this.renderRecommends(this.dom)
-        this.renderCasting(this.dom)
-        console.log(this.carrousel.createSchema)
-        this.dom.appendChild(this.carrousel.createSchema)
+        this.dom.appendChild(this.CreateMovie(this.movie, 'normal')) 
     }
     /**
      * Render Carrousel (splidejs)
