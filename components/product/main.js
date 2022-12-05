@@ -76,7 +76,7 @@ export class Product extends Render
         containerMovies.setAttribute('class', 'recommends')
         const containerCasting = document.createElement('section');
         containerCasting.setAttribute('class', 'casting');
-        this.dom.appendChild(this.CreateMovie(this.movie, 'normal')) 
+        this.dom.appendChild(this.cardMovie(this.movie)) 
     }
     /**
      * Render Carrousel (splidejs)

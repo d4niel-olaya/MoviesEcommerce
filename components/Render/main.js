@@ -31,6 +31,24 @@ export class Render
         return container;
     }   
     /**
+     * Create bootstrap card
+     * @param {object} MovieJSON
+     * @returns {HTMLElement} Section element
+     */
+    cardMovie({id,title,backdrop_path, overview}){
+        const container = document.createElement('article');
+        container.setAttribute('class', 'card mx-auto w-50');
+        const html = `
+            <img src="https://image.tmdb.org/t/p/w500${backdrop_path}" class="card-img-top" alt="${title}">
+            <div class="card-body">
+                <h4 class="card-title">${title}</h4>
+                <p class="card-text">${overview}</p>
+            </div>
+        `   
+        container.insertAdjacentHTML('afterbegin', html);
+        return container
+    }
+    /**
      * 
      * @param {JSON} param0
      * @returns {HTMLDivElement} Div element 

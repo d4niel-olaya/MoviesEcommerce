@@ -42,7 +42,9 @@ export class CarrouselBootstrap{
 
         const sch = `
             <div class="${params.active}">
-                ${params.img}
+                <a href="../../pages/product/index.html?id=${id}">
+                    ${params.img}   
+                </a>
                 <div class="carousel-caption d-none d-md-block">
                     <h4>${name}</h4>
                 </div>
@@ -131,7 +133,7 @@ export class CarrouselBootstrap{
      */
     renderSchema(){
         const carrousel = document.createElement('div');
-        carrousel.setAttribute('class', 'w-25 mx-auto') // Bootstrap class
+        carrousel.setAttribute('class', 'w-25 mx-auto p-3') // Bootstrap class
         carrousel.appendChild(this.createSchema)
         this.dom.appendChild(carrousel);
     }
