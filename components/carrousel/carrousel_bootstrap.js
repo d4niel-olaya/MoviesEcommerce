@@ -16,7 +16,7 @@ export class CarrouselBootstrap{
         this.id = id // Main container id
         this.casting = casting // Casting Array
         this.dom = dom // Div container 
-        this.firts = casting[0].name
+        this.firts = casting[0].name || casting[0].title
         this.url= `https://image.tmdb.org/t/p/w500` // Url api to images
         this.renderSchema()
     }
@@ -25,7 +25,7 @@ export class CarrouselBootstrap{
     * @param {object} 
     * @returns {HTMLDivElement} Carrousel item
      */
-    createItem({id,name,profile_path}){
+    createItem(id,name,source){
         let params = { // object with proterties that prolly will be changed
             active:'carousel-item',
             img:'',
@@ -35,14 +35,14 @@ export class CarrouselBootstrap{
             params.active = 'carousel-item active'
         }
 
-        params.link = 'https://image.tmdb.org/t/p/w500' + profile_path
+        params.link = 'https://image.tmdb.org/t/p/w500' + source
         params.img = `<img src="${params.link}" class="d-block w-100" alt="${name}">`
 
         const sch = `
             <div class="${params.active}">
                 ${params.img}
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>${name}</h3>
+                    <h4>${name}</h4>
                 </div>
             </div>
         `   
@@ -82,7 +82,7 @@ export class CarrouselBootstrap{
     containerItems(){
         let items = [] // Actors array
         this.casting.forEach(element =>{
-            items.push(this.createItem(element))
+            items.push(this.createItem(element.id, element.name || element.title, element.profile_path || element.backdrop_path))
         })
         console.log(items)
         console.log(items.join(''));

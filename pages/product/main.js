@@ -11,9 +11,12 @@ const app = document.getElementById('app');
 const mv = await get(`movie/${id}`);
 const movie = await get(`movie/${id}/recommendations`);
 const casting = await get(`movie/${id}/credits`);
+const moviesRecomends = movie.results.filter(element => element.backdrop_path != null);
+console.log(moviesRecomends)
 // const producto = new Product(movie.results, app, casting.cast, mv)
 const actors = casting.cast.filter(element => element.profile_path != null);
 const carrousel = new CarrouselBootstrap('actores', actors.slice(0,10), app)
+const carrouselMovies = new CarrouselBootstrap('movies', moviesRecomends, app)
 
 
 
