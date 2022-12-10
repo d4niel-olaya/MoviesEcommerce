@@ -144,16 +144,24 @@ export class Shopping
         })
     }
 
-    
+    /**
+     * Storage and render order
+     * @param {HTMLElement} item 
+     */
     OrderDetail(item){
         item.addEventListener('click', (e) =>{
             const order = JSON.parse(localStorage.getItem('checkout'));
             const dateOrder = item.getAttribute('data-order');
             const json = Object.values(order).find(element => element.date == dateOrder);
-            this.renderDetailOrder(json);
+            this.renderOrderDetail(json);
             
         })
     }
+    /**
+     * Create order item (checkout view)
+     * @param {*} object  
+     * @returns {HTMLElement} Article
+     */
     CreateOrder({date,movies}){
         const card = document.createElement('article');
         card.setAttribute('class', 'order');
@@ -169,8 +177,13 @@ export class Shopping
         this.OrderDetail(img);
         return card
     }
-
-    renderDetailOrder(json){
+    
+    /**
+     * Render OrderDetail
+     * @param {object} json 
+     * @render Detail order
+     */
+    renderOrderDetail(json){
         const movies = document.createElement('section');
         movies.setAttribute('class','movies');
         const frag = document.createDocumentFragment();
@@ -186,6 +199,11 @@ export class Shopping
         frag.appendChild(movies);
         this.dom.appendChild(frag);
     }   
+    /**
+     * Render Orders in the localstorage (shopping cart)
+     * @param {*} obj 
+     * @render Orders in the localstorage
+     */
     renderOrder(obj){
         const frag = document.createDocumentFragment();
         const orders = document.createElement('section');
@@ -199,6 +217,10 @@ export class Shopping
         this.dom.appendChild(frag);
         console.log(frag);
     }
+    /**
+     * Create main div and render movies in the shopping cart
+     * @render Shopping cart
+     */
     render(){
         const frag = document.createDocumentFragment();
         const main = document.createElement('main');
