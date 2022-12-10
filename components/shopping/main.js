@@ -40,6 +40,12 @@ export class Shopping
         arrow.addEventListener('click', () => {this.renderOrder(json)});
         return arrow;
     }
+
+    /**
+     * Create Order detail. it contains order date and movies quantity
+     * @param {object} object 
+     * @returns {HTMLElement} Article
+     */
     CreateDetail({id,title,img}){
         const container = document.createElement('article');
         container.setAttribute('class', 'movie');
@@ -52,6 +58,12 @@ export class Shopping
         container.insertAdjacentHTML('afterbegin', items);
         return container;
     }
+
+    /**
+     * Create Orders item with close icon to delete itself
+     * @param {*} object
+     * @returns {HTMLElement} Article 
+     */
     CreateItem({id,title,img}){
         const container = document.createElement('article');
         container.setAttribute('class', 'movie');
@@ -67,6 +79,10 @@ export class Shopping
         this.Remove(remove);
         return container;
     }
+    /**
+     * Create pre-order elements (movies selected and button to save the order)
+     * @returns {HTMLDivElement} Div
+     */
     CreateBtn(){
         const container = document.createElement('div');
         container.setAttribute('class', 'check');
@@ -85,6 +101,11 @@ export class Shopping
         this.Checkout(btn);
         return container;
     }
+
+    /**
+     * add onclick event to remove the element passed from the pre-order list
+     * @param {HTMLElement} item 
+     */
     Remove(item){
         item.addEventListener('click', (e) =>{
             const i = e.target;
@@ -95,6 +116,11 @@ export class Shopping
             localStorage.setItem('movies', JSON.stringify(this.movies));
         })
     }
+
+    /**
+     * Add onclick event to go orders view
+     * @param {HTMLElement} item 
+     */
     Checkout(item){
         item.addEventListener('click', () => {
             if(!localStorage.hasOwnProperty('checkout')){
@@ -117,6 +143,8 @@ export class Shopping
             // alert('vas a ir al checkout');
         })
     }
+
+    
     OrderDetail(item){
         item.addEventListener('click', (e) =>{
             const order = JSON.parse(localStorage.getItem('checkout'));
