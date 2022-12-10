@@ -2,12 +2,21 @@ import { get } from "../../service/api";
 import { NavBar } from "../navbar/main";
 
 export class Shopping
-{
+{   
+    /**
+     * 
+     * @param {HTMLDivElement} dom Div with id app
+     * @param {Array} movies Api Query
+     */
     constructor(dom,movies){
         this.movies = movies;
         this.dom = dom
         this.render();
     }
+    /**
+     * Create Navbar with menu icon and h2 tag
+     * @returns {HTMLHeadElement} Header (NavBar)
+     */
     CreateNavbar(){
         const header = document.createElement('header');
         header.setAttribute('class', 'header-cart');
@@ -18,6 +27,12 @@ export class Shopping
         return header;
     }
 
+
+    /**
+     * Create and set onclick event to render a Specific order
+     * @param {object} json 
+     * @returns {HTMLImageElement} Arrow icon
+     */
     CreateArrowBack(json){
         const arrow = document.createElement('img');
         arrow.setAttribute('src', '../../assets/icons/back-arrow-comb 2.svg');
